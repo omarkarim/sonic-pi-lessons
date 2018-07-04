@@ -73,11 +73,29 @@ Pupils are first invited to set up and connect their Raspberry Pi hardware. They
 
 1. Once they have copied this code, point out the syntax of the `if` statement, specifically the words `else` and `end`. These are similar to the `do` and `end` found in the iteration block discussed in the previous lesson, in that they’re like punctuation. The `else` separates the two different branches of the `if` statement.
 
-1. The first line should also be discussed; this is equivalent to a coin toss in that `rand(1)` returns a random value between `0` and `1`, and we’re testing to see if that random value is less than 0.5. For the advanced pupils, you may wish to point out that changing the 0.5 to different values will affect the probability of which branch is selected. For example, a value of 0.1 would mean that (on average) every 10 runs the first branch be selected only once, and the second branch will be selected 9 times.
+1. The first line should also be discussed; this is equivalent to a coin toss in that `rand`, which is equivalent to `rand(1)`, returns a random value between `0` and `1`, and we’re testing to see if that random value is less than 0.5. For the advanced pupils, you may wish to point out that changing the 0.5 to different values will affect the probability of which branch is selected. For example, a value of 0.1 would mean that (on average) every 10 runs the first branch be selected only once, and the second branch will be selected 9 times.
 
-1. The pupils are then invited to press the play button a number of times so that they can hear the different branches being executed, the decision of which branch to execute being random each time.
+1. The pupils are then invited to press the play button a number of times and notice that the path chosen is the same every time. This is because Sonic Pi returns random numbers in a repeatable manner, i.e., consecutive runs of the program will return the same `rand` value for matching calls. As a result, randomized Sonic Pi programs can be re-rerun and shared, sounding the same each time. Students should then be instructed to try altering the random number sequnce with the `use_random_seed` function.
 
-1. Pupils are invited to play around with the constructs of this lesson, in addition to everything they’ve learned so far, to design a simple musical program.
+  ```ruby
+  use_random_seed(2)
+
+  if rand < 0.5
+    play 60
+    sleep 0.5
+    play 62
+  else
+    play 72
+    sleep 0.25
+    play 71
+    sleep 0.25
+    play 70
+  end
+  ```
+
+1. Advanced students should be shown other useful Sonic Pi methods for randomizaton, including `rand_i`, `rrand`, `rrand_i`, `choose`, `dice` and `one_in`.
+
+1. Pupils are invited to play around with the constructs of this lesson, in addition to everything they’ve learned so far, to design a simple musical program. Advanced students could be challenged to create a non-repeatable random program with the hint `use_random_seed(Time.now.sec)`
 
 ## Plenary
 
